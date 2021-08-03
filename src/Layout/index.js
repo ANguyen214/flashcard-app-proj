@@ -4,13 +4,13 @@ import NotFound from "./NotFound";
 
 function Layout() {
   return (
-    <>
+    <div>
       <Header />
       <div className="container">
         {/* TODO: Implement the screen starting here */}
         <NotFound />
       </div>
-    </>
+    </div>
   );
 }
 
