@@ -5,7 +5,6 @@ import {deleteCard, deleteDeck, readDeck} from "../utils/api/index";
 function Deck() {
     const history = useHistory();
     const params = useParams();
-
     const [newDeck, setNewDeck] = useState(null);
     const [newCards, setNewCards] = useState(null);
 
@@ -14,15 +13,15 @@ function Deck() {
             setNewDeck([]);
             setNewCards([]);
             try {
-                const response = await readDeck(params.deckId)
-                setNewDeck(response);
+                const event = await readDeck(params.deckId)
+                setNewDeck(event);
                 const {cards} = response;
                 setNewCards(cards);
             } catch (error) {
                 console.log(error);
             }
         }
-        loadDecks()
+        loadDecks();
     }, [params])
 
     if(newDeck && newCards){
@@ -67,6 +66,8 @@ function Deck() {
             </div>
         );
 
-    } 
+    } else {
+        return <p>Please wait.....</p>
+    }
 }
 export default Deck;

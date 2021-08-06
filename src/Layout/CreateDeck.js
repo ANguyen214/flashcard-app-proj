@@ -4,8 +4,8 @@ import {createDeck} from "../utils/api/index";
 
 function CreateDeck() {
     const history = useHistory();
-    // const [name, setName] = useState("Deck Name");
-    // const [description, setDescription] = useState("Brief description of the deck");
+    const [name, setName] = useState("Deck Name");
+    const [description, setDescription] = useState("Brief description of the deck");
 
     const initialFormData = {
         name: "",
@@ -22,15 +22,21 @@ function CreateDeck() {
     }
 
     const handleSubmit = (event) => {
+        // event.preventDefault();
+        // function Submit() {
+        //     let name = [formData.name];
+        //     let description = [formData.description];
+        //     const createNewDeck = createDeck({name, description});
+        //     return createNewDeck;
+        // }
+        // Submit();
+        // history.push(`decks/${Submit().id}`);
         event.preventDefault();
-        function Submit() {
-            let name = [formData.name];
-            let description = [formData.description];
-            const createNewDeck = createDeck({name, description});
-            return createNewDeck;
-        }
-        Submit();
-        history.push(`decks/${Submit().id}`);
+        let formName = formData.name;
+        let formDescription = formData.description;
+        const newDeck = {formName, formDescription}
+        let createNewDeck = createDeck(newDeck)
+            .then(event => history.push(`/decks/${event.id}`))  
     }
 
     const handleCancel = (event) => {

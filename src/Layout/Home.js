@@ -23,7 +23,7 @@ function Home() {
     const handleNewDeck = () => {
         history.push("/decks/new");
     }
-//hello testing github
+
     return (
         <div>
             <button onClick={handleNewDeck}>+Create Deck</button>
