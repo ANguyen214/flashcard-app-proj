@@ -15,7 +15,7 @@ function Deck() {
             try {
                 const event = await readDeck(params.deckId)
                 setNewDeck(event);
-                const {cards} = response;
+                const {cards} = event;
                 setNewCards(cards);
             } catch (error) {
                 console.log(error);
