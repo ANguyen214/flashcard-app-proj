@@ -1,17 +1,23 @@
 {
   "decks": [
     {
-      "name": "Testing Deck att 1",
+      "name": "Testing Deck ",
       "description": "Will be using for testing app",
       "id": 1
     }
   ],
   "cards": [
     {
-      "front": "new front",
-      "back": "new back",
+      "front": "new front 1",
+      "back": "new back 1",
       "deckId": 1,
       "id": 1
+    },
+    {
+      "front": "Hello",
+      "back": "Goodbye",
+      "deckId": 1,
+      "id": 2
     }
   ]
 }

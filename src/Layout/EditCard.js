@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {useHistory, Link, useParams} from "react-router-dom";
 import { readDeck, readCard, updateCard } from "../utils/api/index";
+import AddEditForm from"./AddEditForm";
 
 function EditCard() {
     const history = useHistory();
@@ -54,37 +55,27 @@ function EditCard() {
         history.push(`/decks/${params.deckId}`);
     }
 
-    return (
-        <div>
+    if(currDeck){
+        return (
             <div>
-                <Link to={"/"}>Home</Link> / {`insert deckname here`}
+                <div>
+                    <Link to={"/"}>Home</Link> / {currDeck.name}
+                </div>
+                <h2>Edit Card</h2>
+                <br />
+                <AddEditForm 
+                    front={front}
+                    back={back}
+                    handleFront={handleFront}
+                    handleBack={handleBack}
+                    handleSubmit={handleSubmit}
+                    handleCancel={handleCancel}
+                />
             </div>
-            <h2>Edit Card</h2>
-            <br />
-            <form className="editCardForm" onSubmit={handleSubmit}>
-                <label>Front</label>
-                <br />
-                    <textarea
-                        type="text"
-                        required
-                        name="front"
-                        onChange={handleFront}
-                    />
-                <br />
-                <label>Back</label>
-                <br />
-                    <textarea
-                        type="text"
-                        required
-                        name="back"
-                        onChange={handleBack}
-                    />
-                <br />
-                <button onClick={handleCancel}>Cancel</button>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    );
+        );
+    }
+    return<h2>Loading Please Wait...</h2>
+   
 }
 
 export default EditCard; 

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { useHistory, useParams, Link } from "react-router-dom";
 import { readDeck, createCard } from "../utils/api/index";
+import AddEditForm from "./AddEditForm";
 
 function AddCard () {
     const history = useHistory();
@@ -58,28 +59,14 @@ function AddCard () {
                 </div>
                 <h2>{currDeck.name}: Add Card</h2>
                 <br />
-                <form onSubmit={handleSave}>
-                    <label>Front</label>
-                    <br />
-                    <textarea
-                        value={front}
-                        required
-                        onChange={handleFront}
-                        placeholder="Add to front of flashcard..."
-                    />
-                    <br />
-                    <label>Back</label>
-                    <br />
-                    <textarea
-                        value={back}
-                        required
-                        onChange={handleBack}
-                        placeholder="Add to back of flashcard..."
-                    />
-                    <br />
-                    <button onClick={handleDone}>Done</button>
-                    <button type="submit">Save</button>
-                </form>
+                <AddEditForm 
+                    handleFront={handleFront}
+                    handleBack={handleBack}
+                    handleSubmit={handleSave}
+                    handleCancel={handleDone}
+                    front={front}
+                    back={back}
+                />
             </div>
         );
     }
