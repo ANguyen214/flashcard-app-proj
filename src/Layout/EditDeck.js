@@ -8,7 +8,7 @@ function EditDeck() {
 
     const [currDeck, setCurrDeck] = useState(null);
     const [name, setName] = useState("");
-    const [description, setDescription] = ("");
+    const [description, setDescription] = useState("");
 
     useEffect(() => {
         async function loadDeck() {
@@ -44,14 +44,14 @@ function EditDeck() {
             })
     }
 
-    const handleFormChange = (event) => {
-        if(event.target.value === "name"){
-            setName(event.target.value);
-        }
-        if(event.target.value === "description"){
-            setDescription(event.target.value);
-        }
+    const handleNameChange = (event) => {
+        setName(event.target.value);
     }
+
+    const handleDescriptionChange = (event) => {
+        setDescription(event.target.value);
+    }
+
     if(currDeck){
         return (
             <div>
@@ -68,7 +68,7 @@ function EditDeck() {
                             type="text"
                             required
                             value={name}
-                            onChange={handleFormChange}
+                            onChange={handleNameChange}
                         />
                     </label>
                     <br />
@@ -79,7 +79,7 @@ function EditDeck() {
                             type="text"
                             required
                             value={description}
-                            onChange={handleFormChange}
+                            onChange={handleDescriptionChange}
                         />
                     </label>
                     <button onClick={handleCancel}>Cancel</button>

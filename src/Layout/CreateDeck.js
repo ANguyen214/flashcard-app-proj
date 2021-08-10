@@ -4,38 +4,21 @@ import {createDeck} from "../utils/api/index";
 
 function CreateDeck() {
     const history = useHistory();
-    const [name, setName] = useState("Deck Name");
-    const [description, setDescription] = useState("Brief description of the deck");
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
 
-    const initialFormData = {
-        name: "",
-        description: "",
-    };
+    const handleName = (event) => {
+        setName(event.target.value);
+    }
 
-    const [formData, setFormData] = useState(initialFormData);
-
-    const handleFormChange = (event) => {
-        setFormData({
-            ...formData, 
-            [event.target.name]: event.target.value,
-        });
+    const handleDescription = (event) => {
+        setDescription(event.target.value);
     }
 
     const handleSubmit = (event) => {
-        // event.preventDefault();
-        // function Submit() {
-        //     let name = [formData.name];
-        //     let description = [formData.description];
-        //     const createNewDeck = createDeck({name, description});
-        //     return createNewDeck;
-        // }
-        // Submit();
-        // history.push(`decks/${Submit().id}`);
         event.preventDefault();
-        let formName = formData.name;
-        let formDescription = formData.description;
-        const newDeck = {formName, formDescription}
-        let createNewDeck = createDeck(newDeck)
+        const newDeck = {name, description}
+        createDeck(newDeck)
             .then(event => history.push(`/decks/${event.id}`))  
     }
 
@@ -58,8 +41,8 @@ function CreateDeck() {
                         type="text"
                         name="name"
                         required
-                        onChange={handleFormChange}
-                        value={formData.name}
+                        onChange={handleName}
+                        value={name}
                         placeholder="Deck Name"
                     />
                 </label>
@@ -71,8 +54,8 @@ function CreateDeck() {
                         type="text"
                         name="description"
                         required
-                        onChange={handleFormChange}
-                        value={formData.description}
+                        onChange={handleDescription}
+                        value={description}
                         placeholder="Brief description of the deck"
                     />
                 </label>

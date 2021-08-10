@@ -51,7 +51,7 @@ function Deck() {
                             <li key={card.id}>
                                 {card.front}
                                 <div>{card.back}</div>
-                            <button onClick={() => {history.push(`/decks/${card.id}/edit`)}}>Edit</button>
+                            <button onClick={() => {history.push(`/decks/${newDeck.id}/cards/${card.id}/edit`)}}>Edit</button>
                             <button onClick={() => {
                                 if(window.confirm("Delete this card?")){
                                     deleteCard(`${card.id}`);
