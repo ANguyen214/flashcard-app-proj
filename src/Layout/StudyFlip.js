@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from "react";
 import { useHistory, useParams } from "react-router-dom";
 
-export default ({currCard}) => {
+function StudyFlip({currCard}){
     const params = useParams();
     const history = useHistory();
 
@@ -15,6 +15,7 @@ export default ({currCard}) => {
                 setSide(true);
             }
             setStudyCard(currCard[studyCount]);
+            // eslint-disable-next-line react-hooks/exhaustive-deps
         },[currCard])
 
         const handleNextCard = (event) => {
@@ -74,3 +75,5 @@ export default ({currCard}) => {
             );
         }
     }
+
+    export default StudyFlip;

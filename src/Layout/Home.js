@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Link, useHistory} from "react-router-dom";
 import {listDecks, deleteDeck} from "../utils/api/index";
-import style from "./style.css";
+import "./style.css";
 
 
 function Home() {
