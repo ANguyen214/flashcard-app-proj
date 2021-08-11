@@ -46,7 +46,7 @@ function Deck() {
                 </div>
                 <div>
                     <h2>Cards</h2>
-                    <ul>
+                    <ul className="nobull">
                         {newCards.map((card) => (
                             <li key={card.id}>
                                 {card.front}

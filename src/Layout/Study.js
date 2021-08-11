@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from "react";
-import { useHistory, useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import {readDeck} from "../utils/api/index";
+import StudyFlip from "./StudyFlip";
 
 function Study(){
     const params = useParams();
-    const history = useHistory();
+
     const [currDeck, setCurrDeck] = useState(null);
     const [currCard, setCurrCard] = useState(null);
 
@@ -16,7 +17,7 @@ function Study(){
                 const event = await readDeck(params.deckId);
                 setCurrDeck(event);
                 const {cards} = event;
-                setCurrCard(event);
+                setCurrCard(cards);
             } catch (error) {
                 console.log(error);
             }
@@ -33,7 +34,7 @@ function Study(){
                 <div>
                     <h1>{currDeck.name}: Study</h1>
                 </div>
-    
+            <StudyFlip currCard={currCard}/>
             </div>
         );
     }

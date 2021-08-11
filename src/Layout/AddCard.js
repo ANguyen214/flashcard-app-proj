@@ -55,7 +55,7 @@ function AddCard () {
         return (
             <div>
                 <div>
-                    <Link to="/">Home</Link> / <Link to={`/decks/${params.deckId}`}>{currDeck.name}</Link> / {"Add Card"}
+                    <Link to="/">Home</Link> / <Link to={`/decks/${params.deckId}`}>{currDeck.name}</Link> / <div>Add Card</div>
                 </div>
                 <h2>{currDeck.name}: Add Card</h2>
                 <br />
